@@ -1,0 +1,56 @@
+﻿@model IEnumerable<online_version.Models.GetAll_Result>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .table{margin-left:3em;}
+        #ed{color:blue;}
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Deliveries", FormMethod.Post))
+    {<br />
+        <h1>Items to be Delivered</h1>
+        <table class="table  table-sm">
+            <thead>
+                <tr>
+                    <th>Comodity</th>
+                    <th>Quantiry</th>
+                    <th>Supplier Name</th>
+                    <th>Delivery Date</th>
+                    <th>Delivery By</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                 {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.Comodity)</td>
+                        <td>@Html.DisplayFor(model => item.Quantity)</td>
+                        <td>@Html.DisplayFor(model => item.SupplierName)</td>
+                        <td>@Html.DisplayFor(model => item.DeliveryDate)</td>
+                        <td>@Html.DisplayFor(model => item.DeleveringBy)</td>
+                        <td>@Html.DisplayFor(model => item.Status)</td>
+                        <td id="ed">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Product_id})
+                          
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Product_id})
+                        </td>
+                    </tr>
+                    
+                 }
+            </tbody>
+        </table>
+     }
+
+</body>
+</html>
