@@ -36,6 +36,7 @@ Layout = null;
                     @Html.ValidationMessageFor(model => model.Comodity, "", new { @class = "text-danger" })
                 </div>
             </div>
+            
 
             <div class="modal-body">
                 @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -88,8 +89,6 @@ Layout = null;
     </div>
    }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+   
 </body>
 </html>
