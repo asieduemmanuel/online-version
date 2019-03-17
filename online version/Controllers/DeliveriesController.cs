@@ -11,6 +11,7 @@ using System.Web.Mvc.Async;
 using System.Web.Mvc.Filters;
 using System.Web.Profile;
 using System.Web.Routing;
+using System.Data.Entity;
 
 namespace online_version.Controllers
 {
@@ -45,6 +46,30 @@ namespace online_version.Controllers
                 ModelState.Clear();
             }
             return View();
+        }
+
+        public ActionResult Edit(int id = 0)
+        {
+            OnlineVersionEntities db = new OnlineVersionEntities();
+            Delivering delivering = db.Deliverings.Find(id);
+            if (delivering == null)
+            {
+                return HttpNotFound();
+            }
+            return View(delivering);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Delivering delivering)
+        {
+            OnlineVersionEntities db = new OnlineVersionEntities();
+            if (ModelState.IsValid)
+            {
+                db.Entry(delivering).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "SideBar");
+            }
+            return View(delivering);
         }
     }
 

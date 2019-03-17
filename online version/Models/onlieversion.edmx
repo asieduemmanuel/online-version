@@ -10,12 +10,12 @@
             <PropertyRef Name="Product id" />
           </Key>
           <Property Name="Product id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Comodity" Type="nchar" MaxLength="10" />
+          <Property Name="Comodity" Type="nvarchar" MaxLength="50" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="SupplierName" Type="nchar" MaxLength="10" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryDate" Type="date" />
-          <Property Name="DeleveringBy" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="DeleveringBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Suppliers">
           <Key>
@@ -42,6 +42,15 @@
         <Function Name="DeliveedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DeliveryList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="myUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Product_id" Type="int" Mode="In" />
+          <Parameter Name="Comodity" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="SupplierName" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeliveryDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeleveringBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -86,12 +95,12 @@
             <PropertyRef Name="Product_id" />
           </Key>
           <Property Name="Product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Comodity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Comodity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="SupplierName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
-          <Property Name="DeleveringBy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DeleveringBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -153,6 +162,33 @@
           <FunctionImport Name="DeliveryList" ReturnType="Collection(OnlineVersionModel.DeliveryList_Result)" />
           <FunctionImport Name="Ongoing" EntitySet="Deliverings" ReturnType="Collection(OnlineVersionModel.Delivering)" />
           <FunctionImport Name="GetAll" ReturnType="Collection(OnlineVersionModel.GetAll_Result)" />
+          <FunctionImport Name="myUpdate">
+            <Parameter Name="Product_id" Mode="In" Type="Int32" />
+            <Parameter Name="Comodity" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="SupplierName" Mode="In" Type="String" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="String" />
+            <Parameter Name="DeleveringBy" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update" EntitySet="Deliverings" ReturnType="Collection(OnlineVersionModel.Delivering)">
+            <Parameter Name="Product_id" Mode="In" Type="Int32" />
+            <Parameter Name="Comodity" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="SupplierName" Mode="In" Type="String" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="String" />
+            <Parameter Name="DeleveringBy" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sap" EntitySet="Deliverings" ReturnType="Collection(OnlineVersionModel.Delivering)">
+            <Parameter Name="Product_id" Mode="In" Type="Int32" />
+            <Parameter Name="Comodity" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="SupplierName" Mode="In" Type="String" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="String" />
+            <Parameter Name="DeleveringBy" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -295,6 +331,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="myUpdate" FunctionName="OnlineVersionModel.Store.myUpdate" />
+          <FunctionImportMapping FunctionImportName="Update" FunctionName="OnlineVersionModel.Store.myUpdate" />
+          <FunctionImportMapping FunctionImportName="sap" FunctionName="OnlineVersionModel.Store.myUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

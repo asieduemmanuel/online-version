@@ -158,5 +158,170 @@ namespace online_version.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAll_Result>("GetAll");
         }
+    
+        public virtual int myUpdate(Nullable<int> product_id, string comodity, Nullable<int> quantity, string supplierName, string deliveryDate, string deleveringBy, string status)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("Product_id", product_id) :
+                new ObjectParameter("Product_id", typeof(int));
+    
+            var comodityParameter = comodity != null ?
+                new ObjectParameter("Comodity", comodity) :
+                new ObjectParameter("Comodity", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var supplierNameParameter = supplierName != null ?
+                new ObjectParameter("SupplierName", supplierName) :
+                new ObjectParameter("SupplierName", typeof(string));
+    
+            var deliveryDateParameter = deliveryDate != null ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(string));
+    
+            var deleveringByParameter = deleveringBy != null ?
+                new ObjectParameter("DeleveringBy", deleveringBy) :
+                new ObjectParameter("DeleveringBy", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("myUpdate", product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<Delivering> Update(Nullable<int> product_id, string comodity, Nullable<int> quantity, string supplierName, string deliveryDate, string deleveringBy, string status)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("Product_id", product_id) :
+                new ObjectParameter("Product_id", typeof(int));
+    
+            var comodityParameter = comodity != null ?
+                new ObjectParameter("Comodity", comodity) :
+                new ObjectParameter("Comodity", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var supplierNameParameter = supplierName != null ?
+                new ObjectParameter("SupplierName", supplierName) :
+                new ObjectParameter("SupplierName", typeof(string));
+    
+            var deliveryDateParameter = deliveryDate != null ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(string));
+    
+            var deleveringByParameter = deleveringBy != null ?
+                new ObjectParameter("DeleveringBy", deleveringBy) :
+                new ObjectParameter("DeleveringBy", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Delivering>("Update", product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<Delivering> Update(Nullable<int> product_id, string comodity, Nullable<int> quantity, string supplierName, string deliveryDate, string deleveringBy, string status, MergeOption mergeOption)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("Product_id", product_id) :
+                new ObjectParameter("Product_id", typeof(int));
+    
+            var comodityParameter = comodity != null ?
+                new ObjectParameter("Comodity", comodity) :
+                new ObjectParameter("Comodity", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var supplierNameParameter = supplierName != null ?
+                new ObjectParameter("SupplierName", supplierName) :
+                new ObjectParameter("SupplierName", typeof(string));
+    
+            var deliveryDateParameter = deliveryDate != null ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(string));
+    
+            var deleveringByParameter = deleveringBy != null ?
+                new ObjectParameter("DeleveringBy", deleveringBy) :
+                new ObjectParameter("DeleveringBy", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Delivering>("Update", mergeOption, product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<Delivering> sap(Nullable<int> product_id, string comodity, Nullable<int> quantity, string supplierName, string deliveryDate, string deleveringBy, string status)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("Product_id", product_id) :
+                new ObjectParameter("Product_id", typeof(int));
+    
+            var comodityParameter = comodity != null ?
+                new ObjectParameter("Comodity", comodity) :
+                new ObjectParameter("Comodity", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var supplierNameParameter = supplierName != null ?
+                new ObjectParameter("SupplierName", supplierName) :
+                new ObjectParameter("SupplierName", typeof(string));
+    
+            var deliveryDateParameter = deliveryDate != null ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(string));
+    
+            var deleveringByParameter = deleveringBy != null ?
+                new ObjectParameter("DeleveringBy", deleveringBy) :
+                new ObjectParameter("DeleveringBy", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Delivering>("sap", product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<Delivering> sap(Nullable<int> product_id, string comodity, Nullable<int> quantity, string supplierName, string deliveryDate, string deleveringBy, string status, MergeOption mergeOption)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("Product_id", product_id) :
+                new ObjectParameter("Product_id", typeof(int));
+    
+            var comodityParameter = comodity != null ?
+                new ObjectParameter("Comodity", comodity) :
+                new ObjectParameter("Comodity", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var supplierNameParameter = supplierName != null ?
+                new ObjectParameter("SupplierName", supplierName) :
+                new ObjectParameter("SupplierName", typeof(string));
+    
+            var deliveryDateParameter = deliveryDate != null ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(string));
+    
+            var deleveringByParameter = deleveringBy != null ?
+                new ObjectParameter("DeleveringBy", deleveringBy) :
+                new ObjectParameter("DeleveringBy", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Delivering>("sap", mergeOption, product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
+        }
     }
 }
