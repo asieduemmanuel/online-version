@@ -323,5 +323,10 @@ namespace online_version.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Delivering>("sap", mergeOption, product_idParameter, comodityParameter, quantityParameter, supplierNameParameter, deliveryDateParameter, deleveringByParameter, statusParameter);
         }
+    
+        public virtual ObjectResult<UndeliveredList_Result> UndeliveredList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UndeliveredList_Result>("UndeliveredList");
+        }
     }
 }

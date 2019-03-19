@@ -25,6 +25,12 @@ namespace online_version.Controllers
             return View(db.GetAll().ToList());
         }
 
+        public ActionResult Ongoing()
+        {
+            OnlineVersionEntities db = new OnlineVersionEntities();
+            return View(db.UndeliveredList().ToList());
+        }
+
         [HttpGet]
         public ActionResult Create()
         {

@@ -12,7 +12,9 @@
     <title>Create</title>
 </head>
 <body>
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
     <div class="container">
         <div class="panel panel-success">
             <div class="panel-heading">Create Delivries</div>
@@ -76,6 +78,6 @@
         </div>
 
     </div>
-
+    }
 </body>
 </html>

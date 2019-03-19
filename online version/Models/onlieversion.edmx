@@ -189,6 +189,7 @@
             <Parameter Name="DeleveringBy" Mode="In" Type="String" />
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UndeliveredList" ReturnType="Collection(OnlineVersionModel.UndeliveredList_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -225,6 +226,15 @@
           <Property Type="DateTime" Name="DeliveryDate" Nullable="true" />
           <Property Type="String" Name="DeleveringBy" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="UndeliveredList_Result">
+          <Property Type="Int32" Name="Product_id" Nullable="false" />
+          <Property Type="String" Name="Comodity" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="SupplierName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DeliveryDate" Nullable="true" />
+          <Property Type="String" Name="DeleveringBy" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -334,6 +344,19 @@
           <FunctionImportMapping FunctionImportName="myUpdate" FunctionName="OnlineVersionModel.Store.myUpdate" />
           <FunctionImportMapping FunctionImportName="Update" FunctionName="OnlineVersionModel.Store.myUpdate" />
           <FunctionImportMapping FunctionImportName="sap" FunctionName="OnlineVersionModel.Store.myUpdate" />
+          <FunctionImportMapping FunctionImportName="UndeliveredList" FunctionName="OnlineVersionModel.Store.DeliveryList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineVersionModel.UndeliveredList_Result">
+                <ScalarProperty Name="Product_id" ColumnName="Product id" />
+                <ScalarProperty Name="Comodity" ColumnName="Comodity" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DeleveringBy" ColumnName="DeleveringBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

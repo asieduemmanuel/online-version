@@ -1,4 +1,4 @@
-﻿@model IEnumerable<online_version.Models.GetAll_Result>
+﻿@model IEnumerable<online_version.Models.UndeliveredList_Result>
 
 @{
     Layout = null;
@@ -18,7 +18,7 @@
 <body>
     @using (Html.BeginForm("Index", "Deliveries", FormMethod.Post))
     {<br />
-        <h3>Items Delivered</h3>
+        <h3>Items to be Delivered</h3>
         <table class="table  table-sm table-hover">
             <thead>
                 <tr>
@@ -32,7 +32,7 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                 {
+                {
                     <tr>
                         <td>@Html.DisplayFor(model => item.Comodity)</td>
                         <td>@Html.DisplayFor(model => item.Quantity)</td>
@@ -43,14 +43,14 @@
                         <td id="ed">
                             <button id="btnShowModal" type="button" class="btn btn-success">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Product_id })
-                             </button>
+                            </button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Product_id })
-                             </button>
-</td>
+                            </button>
+                        </td>
                     </tr>
-                    
-                 }
+
+                }
             </tbody>
         </table>
      }
