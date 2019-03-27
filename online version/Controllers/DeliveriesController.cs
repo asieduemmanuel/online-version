@@ -46,6 +46,7 @@ namespace online_version.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 db.Deliverings.Add(delivering);
                 db.SaveChanges();
                 //return RedirectToAction("Index", "Deliveries");
@@ -71,6 +72,7 @@ namespace online_version.Controllers
             OnlineVersionEntities db = new OnlineVersionEntities();
             if (ModelState.IsValid)
             {
+      
                 db.Entry(delivering).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "SideBar");

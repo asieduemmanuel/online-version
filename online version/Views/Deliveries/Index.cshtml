@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+ 
 }
 
 <!DOCTYPE html>
@@ -10,9 +11,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="~/Scripts/sideBar.js"></script>
+    
     <style>
-        .table{margin-left:3em;}
-        #ed{color:blue;}
+        .table {
+            margin-left: 3em;
+        }
+
+        #ed {
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -32,28 +40,48 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                 {
-                    <tr>
-                        <td>@Html.DisplayFor(model => item.Comodity)</td>
-                        <td>@Html.DisplayFor(model => item.Quantity)</td>
-                        <td>@Html.DisplayFor(model => item.SupplierName)</td>
-                        <td>@Html.DisplayFor(model => item.DeliveryDate)</td>
-                        <td>@Html.DisplayFor(model => item.DeleveringBy)</td>
-                        <td>@Html.DisplayFor(model => item.Status)</td>
-                        <td id="ed">
-                            <button id="btnShowModal" type="button" class="btn btn-success">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Product_id })
-                             </button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Product_id })
-                             </button>
-</td>
-                    </tr>
-                    
+                {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.Comodity)</td>
+                    <td>@Html.DisplayFor(model => item.Quantity)</td>
+                    <td>@Html.DisplayFor(model => item.SupplierName)</td>
+                    <td>@Html.DisplayFor(model => item.DeliveryDate)</td>
+                    <td>@Html.DisplayFor(model => item.DeleveringBy)</td>
+                    <td>@Html.DisplayFor(model => item.Status)</td>
+                    <td>
+                    <button id="btnShowModal" type="button" class="btn btn-success">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Product_id })
+                    </button>
+                    </td>
+                </tr>
+
                  }
             </tbody>
         </table>
      }
-
+    <div id="myEdit" style="display:none"></div>
 </body>
 </html>
+<script>
+    function editThis(Product_id) {
+        var x = $("#myEdit");
+        x.load("/Deliveries/Edit?Product_id=" + Product_id, function () {
+            x.dialog({
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                },
+                modal: true,
+                width: 500,
+                height: 500,
+                title: "Edit Comodity" + Product_id,
+                resizable: false
+            });
+        });
+    }
+
+</script>

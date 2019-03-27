@@ -10,9 +10,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="~/Scripts/sideBar.js"></script>
     <style>
-        .table{margin-left:3em;}
-        #ed{color:blue;}
+        .table {
+            margin-left: 3em;
+        }
+
+        #ed {
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +39,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr id="CustomerGrid">
                         <td>@Html.DisplayFor(model => item.Comodity)</td>
                         <td>@Html.DisplayFor(model => item.Quantity)</td>
                         <td>@Html.DisplayFor(model => item.SupplierName)</td>
@@ -44,7 +50,7 @@
                             <button id="btnShowModal" type="button" class="btn btn-success">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Product_id })
                             </button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Product_id })
                             </button>
                         </td>

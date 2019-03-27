@@ -12,8 +12,3 @@ function toggle_div_fun(id) {
     else
         divelement.style.display = 'none';
 }
-$('#btnShowModal').on('click', function () {
-    $('#orderModal').load('@Url.Action("Edit", "Edit")', function () {
-        $('#orderModal').modal('show')
-    });
-});

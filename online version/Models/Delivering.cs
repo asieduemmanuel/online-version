@@ -11,15 +11,21 @@ namespace online_version.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Delivering
     {
         public int Product_id { get; set; }
+        [Required]
         public string Comodity { get; set; }
         public Nullable<int> Quantity { get; set; }
+        [Display(Name ="Supplier Name")]
         public string SupplierName { get; set; }
+        [Display(Name = "Delivery Date")]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
+        [Display(Name = "Delivery By")]
         public string DeleveringBy { get; set; }
+        [Required]
         public string Status { get; set; }
     }
 }
