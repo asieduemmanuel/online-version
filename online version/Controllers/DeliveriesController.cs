@@ -79,6 +79,32 @@ namespace online_version.Controllers
             }
             return View(delivering);
         }
+
+        public ActionResult Delete(int id = 0)
+        {
+            OnlineVersionEntities db = new OnlineVersionEntities();
+            Delivering delivering = db.Deliverings.Find(id);
+            if (delivering == null)
+            {
+                return HttpNotFound();
+            }
+            return View(delivering);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Delivering delivering)
+        {
+            OnlineVersionEntities db = new OnlineVersionEntities();
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(delivering).State = EntityState.Deleted;
+                db.SaveChanges();
+                
+                return RedirectToAction("Index", "SideBar");
+            }
+            return View(delivering);
+        }
     }
 
    

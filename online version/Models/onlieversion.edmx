@@ -12,6 +12,8 @@
           <Property Name="Product id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Comodity" Type="nvarchar" MaxLength="50" />
           <Property Name="Quantity" Type="int" />
+          <Property Name="BuyingPrice" Type="int" />
+          <Property Name="SellingPrice" Type="int" />
           <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryDate" Type="date" />
           <Property Name="DeleveringBy" Type="nvarchar" MaxLength="50" />
@@ -101,6 +103,8 @@
           <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
           <Property Name="DeleveringBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BuyingPrice" Type="Int32" />
+          <Property Name="SellingPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -245,6 +249,8 @@
           <EntitySetMapping Name="Deliverings">
             <EntityTypeMapping TypeName="OnlineVersionModel.Delivering">
               <MappingFragment StoreEntitySet="Delivering">
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="BuyingPrice" ColumnName="BuyingPrice" />
                 <ScalarProperty Name="Product_id" ColumnName="Product id" />
                 <ScalarProperty Name="Comodity" ColumnName="Comodity" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />

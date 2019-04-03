@@ -10,22 +10,21 @@
 namespace online_version.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
 
     public partial class GetAll_Result
     {
         public int Product_id { get; set; }
+        [Required]
         public string Comodity { get; set; }
+        [Required]
         public Nullable<int> Quantity { get; set; }
         public string SupplierName { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string DeleveringBy { get; set; }
         [Required]
         public string Status { get; set; }
-       // public List<SelectListItem>Stats { get; set; }
+        public Nullable<int> BuyingPrice { get; set; }
+        public Nullable<int> SellingPrice { get; set; }
     }
 }

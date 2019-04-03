@@ -375,6 +375,7 @@
     <Content Include="Views\Deliveries\Ongoing.cshtml" />
     <Content Include="Views\Shared\_AjaxGridPager.cshtml" />
     <Content Include="Views\Deliveries\Edit.cshtml" />
+    <Content Include="Views\Deliveries\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

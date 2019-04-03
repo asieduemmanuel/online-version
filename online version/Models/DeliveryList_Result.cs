@@ -10,17 +10,16 @@
 namespace online_version.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class DeliveryList_Result
     {
         public string Comodity { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string SupplierName { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string DeleveringBy { get; set; }
         public string Status { get; set; }
+        public Nullable<int> BuyingPrice { get; set; }
+        public Nullable<int> SellingPrice { get; set; }
     }
 }

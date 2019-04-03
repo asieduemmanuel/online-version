@@ -31,6 +31,8 @@
             <thead>
                 <tr>
                     <th>Comodity</th>
+                    <th>Buying Price</th>
+                    <th>Selling Price</th>
                     <th>Quantiry</th>
                     <th>Supplier Name</th>
                     <th>Delivery Date</th>
@@ -43,6 +45,8 @@
                 {
                 <tr>
                     <td>@Html.DisplayFor(model => item.Comodity)</td>
+                    <td>@Html.DisplayFor(model => item.BuyingPrice)</td>
+                    <td>@Html.DisplayFor(model => item.SellingPrice)</td>
                     <td>@Html.DisplayFor(model => item.Quantity)</td>
                     <td>@Html.DisplayFor(model => item.SupplierName)</td>
                     <td>@Html.DisplayFor(model => item.DeliveryDate)</td>

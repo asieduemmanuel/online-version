@@ -19,13 +19,16 @@ namespace online_version.Models
         [Required]
         public string Comodity { get; set; }
         public Nullable<int> Quantity { get; set; }
-        [Display(Name ="Supplier Name")]
+        [Display(Name = "Supplier Name")]
         public string SupplierName { get; set; }
-        [Display(Name = "Delivery Date")]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
-        [Display(Name = "Delivery By")]
+        [Display(Name = "Delivering By")]
         public string DeleveringBy { get; set; }
         [Required]
         public string Status { get; set; }
+        [Display(Name = "Buying Price")]
+        public Nullable<int> BuyingPrice { get; set; }
+        [Display(Name = "Selling Price")]
+        public Nullable<int> SellingPrice { get; set; }
     }
 }
